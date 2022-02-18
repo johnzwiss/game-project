@@ -36,4 +36,6 @@ Character selection : user can choose multiple characters from the start menu
 
 [Imgur](https://i.imgur.com/idQE0uk.jpg) 
 
+<blockquote class="pix-embed-wrap"><div class="pix-embed-activity" data-id="b22f0e99b10d" data-width="100" data-height="100" data-type="art" data-theme="light" data-show-edit="1">Pixilart Embed</div></blockquote><script async="async" src="https://www.pixilart.com/js/embed.js?v=1.0.4"></script> 
+
 
