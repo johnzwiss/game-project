@@ -1,5 +1,9 @@
 # game-project
 <h2> This is a game project </h2>
+Premise: 
+
+User will hop on platforms to reach the top of the cliff. 
+
 Project name: Rock Climber 
 Canvas: true 
 Players : 1
@@ -16,6 +20,24 @@ The instructions are:
 Pressing start will begin the game and when the player jumps the first time, the platforms will begin to cascade down the screen. Each time the player jumps, the character will "flip" to mimic a person reaching with one hand and then the other. If a player falls to the bottom of the screen, the game will end, a message will say "You fell and may or may not be seriously injured" and then present the user with two options, "Play again" or "start menu". If a player makes it to the top, the game will end and the message, "You've reached the top! Rock on!" will appear along with the two buttons "Play again" and "Start menu" 
 
 
+
+WireFrames: 
+
+![player loses](https://i.imgur.com/0Uq852B.jpg) 
+
+![](https://i.imgur.com/lVnfdpl.jpg)
+
+![](https://i.imgur.com/Uw2FqSH.jpg)
+
+![](https://i.imgur.com/idQE0uk.jpg) 
+
+sprite: 
+
+![](https://i.imgur.com/XdH87do.png) 
+
+
+
+
 <h2> Possible additions: </h2>
 
 High score mode : no end, but the game keeps track of how high you have gotten. 
@@ -25,17 +47,3 @@ More levels
 Increasing difficulty : as the user gets higher up the cliff, the platforms start to speed up and boulders fall down. 
 
 Character selection : user can choose multiple characters from the start menu
-
-
-
-[Imgur](https://i.imgur.com/0Uq852B.jpg) 
-
-[Imgur](https://i.imgur.com/lVnfdpl.jpg)
-
-[Imgur](https://i.imgur.com/Uw2FqSH.jpg)
-
-[Imgur](https://i.imgur.com/idQE0uk.jpg) 
-
-sprite: 
-
-[Imgur](https://i.imgur.com/XdH87do.png) 
