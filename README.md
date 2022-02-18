@@ -36,6 +36,6 @@ Character selection : user can choose multiple characters from the start menu
 
 [Imgur](https://i.imgur.com/idQE0uk.jpg) 
 
+sprite: 
 
-
-
+[Imgur](https://i.imgur.com/XdH87do.png) 
