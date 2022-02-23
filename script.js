@@ -248,28 +248,116 @@ function keyup(e) {
     }
 
     let i = -1;
-        // if(platforms[0].x < player.x && player.x < platforms[0].x + platforms[0].width &&
-        // platforms[0].y < player.y && player.y < platforms[0].y + platforms[0].height){
-        //     i = 0;
-        // }
-        // if(platforms[1].x < player.x && player.x < platforms[1].x + platforms[1].width &&
-        // platforms[1].y < player.y && player.y < platforms[1].y + platforms[1].height){
-        //     i = 1;
-        // }
-        // if(platforms[1].x < player.x && player.x < platforms[1].x + platforms[1].width &&
-        //     platforms[1].y < player.y && player.y < platforms[1].y + platforms[1].height){
-        //         i = 1;
-        //     }
+        if (player.x <platArrayA[0].x +platArrayA[0].width
+            && player.x + player.width >platArrayA[0].x
+           && player.y <platArrayA[0].y +platArrayA[0].height
+            && player.y + player.height >platArrayA[0].y){
+            i = 3;
+        }
+        if (player.x <platArrayA[1].x +platArrayA[1].width
+            && player.x + player.width >platArrayA[1].x
+           && player.y <platArrayA[1].y +platArrayA[1].height
+            && player.y + player.height >platArrayA[1].y){
+            i = 5;
+        }
+        if (player.x <platArrayA[2].x +platArrayA[2].width
+            && player.x + player.width >platArrayA[2].x
+           && player.y <platArrayA[2].y +platArrayA[2].height
+            && player.y + player.height >platArrayA[2].y){
+            i = 7;
+        }
+        if (player.x <platArrayA[3].x +platArrayA[3].width
+            && player.x + player.width >platArrayA[3].x
+           && player.y <platArrayA[3].y +platArrayA[3].height
+            && player.y + player.height >platArrayA[3].y){
+            i = 9;
+        }
+        if (player.x <platArrayA[4].x +platArrayA[4].width
+            && player.x + player.width >platArrayA[4].x
+           && player.y <platArrayA[4].y +platArrayA[4].height
+            && player.y + player.height >platArrayA[4].y){
+            i = 11;
+        }
+        if (player.x <platArrayA[5].x +platArrayA[5].width
+            && player.x + player.width >platArrayA[5].x
+           && player.y <platArrayA[5].y +platArrayA[5].height
+            && player.y + player.height >platArrayA[5].y){
+            i = 13;
+        }
+        if (player.x <platArrayA[6].x +platArrayA[6].width
+            && player.x + player.width >platArrayA[6].x
+           && player.y <platArrayA[6].y +platArrayA[6].height
+            && player.y + player.height >platArrayA[6].y){
+            i = 15;
+        }
+        if (player.x <platArrayA[7].x +platArrayA[7].width
+            && player.x + player.width >platArrayA[7].x
+           && player.y <platArrayA[7].y +platArrayA[7].height
+            && player.y + player.height >platArrayA[7].y){
+            i = 17;
+        }
+        if (player.x <platArrayA[8].x +platArrayA[8].width
+            && player.x + player.width >platArrayA[8].x
+           && player.y <platArrayA[8].y +platArrayA[8].height
+            && player.y + player.height >platArrayA[8].y){
+            i = 19;
+        }
+        if (player.x <platArrayA[9].x +platArrayA[9].width
+            && player.x + player.width >platArrayA[9].x
+           && player.y <platArrayA[9].y +platArrayA[9].height
+            && player.y + player.height >platArrayA[9].y){
+            i = 21;
+        }
 
         if (ground.y < player.y && player.y < ground.y + ground.height){
                 i = 1;
             }    
-        if (i >  -1){
+
+
+        if (i > 0 && i < 2){
             player.jump = false;
             player.y = ground.y; 
-        
-              
-        }
+            }
+         else if (i > 2 && i < 4) {
+                player.jump = false;
+                player.y = platArrayA[0].y - 10
+            }
+            else if (i > 4 && i < 6) {
+                player.jump = false;
+                player.y = platArrayA[1].y - 10
+            }
+            else if (i > 6 && i < 8) {
+                player.jump = false;
+                player.y = platArrayA[2].y - 10
+            }
+            else if (i > 8 && i < 10) {
+                player.jump = false;
+                player.y = platArrayA[3].y - 10
+            }
+            else if (i > 10 && i < 12) {
+                player.jump = false;
+                player.y = platArrayA[4].y - 10
+            }
+            else if (i > 12 && i < 14) {
+                player.jump = false;
+                player.y = platArrayA[5].y - 10
+            }
+            else if (i > 14 && i < 16) {
+                player.jump = false;
+                player.y = platArrayA[6].y - 10
+            }
+            else if (i > 16 && i < 18) {
+                player.jump = false;
+                player.y = platArrayA[7].y - 10
+            }
+            else if (i > 18 && i < 20) {
+                player.jump = false;
+                player.y = platArrayA[8].y - 10
+            }
+            else if (i > 20 && i < 22) {
+                player.jump = false;
+                player.y = platArrayA[9].y - 10
+            }
 rendercanvas();
 renderGround();    
 renderplayer();
