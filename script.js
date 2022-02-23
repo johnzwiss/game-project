@@ -20,7 +20,32 @@ let ground = {
     }
  
   
- // create platforms   
+ // create platforms  
+ 
+ 
+//  class Platform {
+//     constructor(x, y, color, height, width) {
+//         this.x = (Math.random() * 500)
+//         this.y = 0,
+//         this.color = "brown",
+//         this.height = 10,
+//         this.width = 70
+//         this.speed = 0
+//     }
+//     render () {
+//         // ctx.fillStyle will determine the color(or style) of your element
+//         ctx.fillStyle = this.color
+//         // ctx.fillRect will draw a rectangle on the canvas
+//         ctx.fillRect(this.x, this.y, this.height, this.width)
+//     }
+//     move () {
+//         this.y -= this.speed;
+//     }
+
+
+
+
+// let platformOne = new Platform(10, -30, "brown", 10, 70)
 let platformA ={
     x: 10,
     y: -20,
@@ -30,14 +55,14 @@ let platformA ={
 }    
 let platformB ={
     x: 90,
-    y: -20,
+    y: -120,
     height: 10,
     width: 70,
    yVelocity: 3, 
 }    
 let platformC ={
     x: 170,
-    y: -20, 
+    y: -220, 
     height: 10,
     width: 70,
     yVelocity: 3, 
@@ -51,14 +76,14 @@ let platformD ={
 }    
 let platformE ={
     x: 330,
-    y: 0,
+    y: -100,
     height: 10,
     width: 70,
     yVelocity: 3, 
 }    
 let platformF ={
     x: 410,
-    y: 0,
+    y: -200,
     height: 10,
     width: 70,
     yVelocity: 3, 
@@ -81,15 +106,16 @@ function renderplayer(){
 function createPlatforms(){
     let i = Math.floor(Math.random() * 3)
     ctx.fillStyle = "brown";
-    ctx.fillRect(platArrayA[i].x, platArrayA[i].y, platArrayA[i].width, platArrayA[i].height);
-    ctx.fillRect(platArrayB[i].x, platArrayB[i].y, platArrayB[i].width, platArrayB[i].height);
+    ctx.fillRect(platArrayA[0].x, platArrayA[0].y, platArrayA[0].width, platArrayA[0].height);
+    ctx.fillRect(platArrayB[0].x, platArrayB[0].y, platArrayB[0].width, platArrayB[0].height);
+    ctx.fillRect(platArrayA[2].x, platArrayA[2].y, platArrayA[2].width, platArrayA[2].height);
+    ctx.fillRect(platArrayB[2].x, platArrayB[2].y, platArrayB[2].width, platArrayB[2].height);
+    ctx.fillRect(platArrayA[1].x, platArrayA[1].y, platArrayA[1].width, platArrayA[1].height);
+    ctx.fillRect(platArrayB[1].x, platArrayB[1].y, platArrayB[1].width, platArrayB[1].height);
       }
 
  //attempting to move platforms      
-function movePlatforms(){ 
-    platArrayA[0,1,2].y += 30
-    platArrayB[0,1,2].y += 30
-   }
+
 // render ground 
 function renderGround(){
     ctx.fillStyle = "black"
@@ -127,9 +153,10 @@ function keyup(e) {
         keys.right = false;
     }
     if(e.keyCode == 38) {
-        if(player.yVelocity < -2) {
+        if(player.yVelocity < -1) 
+        
         player.yVelocity = -10;
-        }
+        
     }
 } 
  function loop() {
@@ -142,14 +169,20 @@ function keyup(e) {
     player.jump = true;
     // If the left key is pressed increase the relevant horizontal velocity
     if(keys.left) {
-        player.xVelocity = -2.5;
+        player.xVelocity = -3;
     }
     if(keys.right) {
-        player.xVelocity = 2.5;
+        player.xVelocity = 3;
     }
     // Updating the y and x coordinates of the player
     player.y += player.yVelocity;
     player.x += player.xVelocity;
+    platArrayA[0].y += .7
+    platArrayB[0].y += .7
+    platArrayA[1].y += .7
+    platArrayB[1].y += .7
+    platArrayA[2].y += .7
+    platArrayB[2].y += .7
     
 
     let i = -1;
@@ -182,10 +215,8 @@ function keyup(e) {
 rendercanvas();
 renderGround();    
 renderplayer();
-
-// renderPlatforms()
-// movePlatforms()
-console.log(platArrayA[1].y)
+createPlatforms();
+// console.log(platArrayA[1].y)
 }
 
 canvas=document.getElementById("canvas");
@@ -196,5 +227,5 @@ ctx.canvas.width = 500;
 document.addEventListener("keydown",keydown);
 document.addEventListener("keyup",keyup);
 // Calling loop every 22 milliseconds to update the frame
-//let runGame = setInterval(loop,40)
-let makePlatforms = setInterval(createPlatforms,2000)
+let runGame = setInterval(loop,40)
+
