@@ -4,7 +4,7 @@ const begin = document.querySelector("#start")
  // create player 
  let player = {
     x: 250,
-    y: 760,
+    y: 460,
     xVelocity: 0,
     yVelocity: 0,
     jump : true,
@@ -14,9 +14,9 @@ const begin = document.querySelector("#start")
  // ground level    
 let ground = {
         x: 0,
-        y: 790,
+        y: 480,
         width: 500,
-        height: 10,
+        height: 20,
     }
  
   
@@ -32,37 +32,34 @@ let ground = {
 //         this.width = 70
 //         this.speed = 0
 //     }
-//     render () {
-//         // ctx.fillStyle will determine the color(or style) of your element
-//         ctx.fillStyle = this.color
-//         // ctx.fillRect will draw a rectangle on the canvas
-//         ctx.fillRect(this.x, this.y, this.height, this.width)
-//     }
-//     move () {
-//         this.y -= this.speed;
+  
 //     }
 
+//     function render() {
+//         ctx.fillStyle = this.color
+//         ctx.fillRect(this.x, this.y, this.width, this.height)
+ 
 
 
 
 // let platformOne = new Platform(10, -30, "brown", 10, 70)
 let platformA ={
     x: 10,
-    y: -20,
+    y: 20,
     height: 10,
     width: 70,
     yVelocity: 3, 
 }    
 let platformB ={
     x: 90,
-    y: -120,
+    y: 120,
     height: 10,
     width: 70,
    yVelocity: 3, 
 }    
 let platformC ={
     x: 170,
-    y: -220, 
+    y: 220, 
     height: 10,
     width: 70,
     yVelocity: 3, 
@@ -76,26 +73,53 @@ let platformD ={
 }    
 let platformE ={
     x: 330,
-    y: -100,
+    y: 100,
     height: 10,
     width: 70,
     yVelocity: 3, 
 }    
 let platformF ={
     x: 410,
-    y: -200,
+    y: 200,
+    height: 10,
+    width: 70,
+    yVelocity: 3, 
+}    
+let platformG ={
+    x: 330,
+    y: 300,
+    height: 10,
+    width: 70,
+    yVelocity: 3, 
+}    
+let platformH ={
+    x: 270,
+    y: 400,
+    height: 10,
+    width: 70,
+    yVelocity: 3, 
+}    
+let platformI ={
+    x: 100,
+    y: 300,
+    height: 10,
+    width: 70,
+    yVelocity: 3, 
+}    
+let platformJ ={
+    x: 150,
+    y: 400,
     height: 10,
     width: 70,
     yVelocity: 3, 
 }    
 //left and right side platforms 
-let platArrayA = [platformA, platformB, platformC]
-let platArrayB = [platformD, platformE, platformF]
+let platArrayA = [platformA, platformB, platformC, platformD, platformE, platformF, platformG, platformH, platformI, platformJ]
 
  //render canvas    
 function rendercanvas(){
     ctx.fillStyle = "white";
-    ctx.fillRect(0, 0, 500, 800);
+    ctx.fillRect(0, 0, 500, 500);
 }
 // render player 
 function renderplayer(){
@@ -107,18 +131,22 @@ function createPlatforms(){
     let i = Math.floor(Math.random() * 3)
     ctx.fillStyle = "brown";
     ctx.fillRect(platArrayA[0].x, platArrayA[0].y, platArrayA[0].width, platArrayA[0].height);
-    ctx.fillRect(platArrayB[0].x, platArrayB[0].y, platArrayB[0].width, platArrayB[0].height);
-    ctx.fillRect(platArrayA[2].x, platArrayA[2].y, platArrayA[2].width, platArrayA[2].height);
-    ctx.fillRect(platArrayB[2].x, platArrayB[2].y, platArrayB[2].width, platArrayB[2].height);
     ctx.fillRect(platArrayA[1].x, platArrayA[1].y, platArrayA[1].width, platArrayA[1].height);
-    ctx.fillRect(platArrayB[1].x, platArrayB[1].y, platArrayB[1].width, platArrayB[1].height);
+    ctx.fillRect(platArrayA[2].x, platArrayA[2].y, platArrayA[2].width, platArrayA[2].height);
+    ctx.fillRect(platArrayA[3].x, platArrayA[3].y, platArrayA[3].width, platArrayA[3].height);
+    ctx.fillRect(platArrayA[4].x, platArrayA[4].y, platArrayA[4].width, platArrayA[4].height);
+    ctx.fillRect(platArrayA[5].x, platArrayA[5].y, platArrayA[5].width, platArrayA[5].height);
+    ctx.fillRect(platArrayA[6].x, platArrayA[6].y, platArrayA[6].width, platArrayA[6].height)
+    ctx.fillRect(platArrayA[7].x, platArrayA[7].y, platArrayA[7].width, platArrayA[7].height)
+    ctx.fillRect(platArrayA[8].x, platArrayA[8].y, platArrayA[8].width, platArrayA[8].height)
+    ctx.fillRect(platArrayA[9].x, platArrayA[9].y, platArrayA[9].width, platArrayA[9].height)
       }
 
  //attempting to move platforms      
 
 // render ground 
 function renderGround(){
-    ctx.fillStyle = "black"
+    ctx.fillStyle = "white"
     ctx.fillRect(ground.x, ground.y, ground.width, ground.height)
 }
 
@@ -177,13 +205,47 @@ function keyup(e) {
     // Updating the y and x coordinates of the player
     player.y += player.yVelocity;
     player.x += player.xVelocity;
-    platArrayA[0].y += .7
-    platArrayB[0].y += .7
-    platArrayA[1].y += .7
-    platArrayB[1].y += .7
-    platArrayA[2].y += .7
-    platArrayB[2].y += .7
-    
+    platArrayA[0].y += .9
+    platArrayA[1].y += .9
+    platArrayA[2].y += .9
+    platArrayA[3].y += .9
+    platArrayA[4].y += .9
+    platArrayA[5].y += .9
+    platArrayA[6].y += .9
+    platArrayA[7].y += .9
+    platArrayA[8].y += .9
+    platArrayA[9].y += .9
+
+    if (platArrayA[0].y > 490) {
+        platArrayA[0].y = 0
+    }
+    if (platArrayA[1].y > 490) {
+        platArrayA[1].y = 0
+    }
+    if (platArrayA[2].y > 490) {
+        platArrayA[2].y = 0
+    }
+    if (platArrayA[3].y > 490) {
+        platArrayA[3].y = 0
+    }
+    if (platArrayA[4].y > 490) {
+        platArrayA[4].y = 0
+    }
+    if (platArrayA[5].y > 490) {
+        platArrayA[5].y = 0
+    }
+    if (platArrayA[6].y > 490) {
+        platArrayA[6].y = 0
+    }
+    if (platArrayA[7].y > 490) {
+        platArrayA[7].y = 0
+    }
+    if (platArrayA[8].y > 490) {
+        platArrayA[8].y = 0
+    }
+    if (platArrayA[9].y > 490) {
+        platArrayA[9].y = 0
+    }
 
     let i = -1;
         // if(platforms[0].x < player.x && player.x < platforms[0].x + platforms[0].width &&
@@ -201,14 +263,10 @@ function keyup(e) {
 
         if (ground.y < player.y && player.y < ground.y + ground.height){
                 i = 1;
-            }   
-
-            if (ground.y < player.y && player.y < ground.y + ground.height){
-                    i = 1;
-                }   
+            }    
         if (i >  -1){
             player.jump = false;
-            player.y = ground.y - 10; 
+            player.y = ground.y; 
         
               
         }
@@ -227,5 +285,5 @@ ctx.canvas.width = 500;
 document.addEventListener("keydown",keydown);
 document.addEventListener("keyup",keyup);
 // Calling loop every 22 milliseconds to update the frame
-let runGame = setInterval(loop,40)
+let runGame = setInterval(loop,22)
 
