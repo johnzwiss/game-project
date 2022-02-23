@@ -1,0 +1,42 @@
+
+* {
+
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  
+  }
+  
+  html, body {
+  
+    height:100%;
+    width:100%;
+  
+  }
+  
+  body {
+  
+    align-content:space-around;
+    background-color:#545f5f;
+    color:#FBF5F3;
+    display:grid;
+    justify-content:center;
+  
+  }
+
+
+#canvas {
+    background-color: blue;
+}
+
+h1{
+    display: grid;
+    justify-content: center;
+}
+
+#start {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  
+}
