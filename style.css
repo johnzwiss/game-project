@@ -4,7 +4,7 @@
     box-sizing:border-box;
     margin:0;
     padding:0;
-  
+    font-family: 'Bebas Neue', cursive;
   }
   
   html, body {
@@ -17,26 +17,75 @@
   body {
   
     align-content:space-around;
-    background-color:#545f5f;
-    color:#FBF5F3;
+    background-color:darkgray;
+    color:whitesmoke;
     display:grid;
     justify-content:center;
   
   }
+#welcome {
+  display: grid;
+  grid-template-rows: 40px 40px 40px 40px 40px;
+  grid-template-columns: 500px;
+  background-color: brown;
+  justify-content: center;
+  position: absolute;
+  top: 20%;
+  font-size: 32px;
+  text-align: center;
+  
 
-
-#canvas {
-    
 }
+
+
+
 
 h1{
     display: grid;
     justify-content: center;
+    font-size: 64px;
+    padding: 10px;
 }
 
 #start {
+ font-size: 32px;
+  /* display: none; */
+}
+#instructions {
+  font-size: 32px;
+}
+
+#instructionPage {
+  display: none;
+  font-size: 24px;
+  background: brown;
+}
+
+#winner {
+  display: none;
+  color:brown;
+  justify-content: center;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  
+  top : 20%;
+  left: 37%;
+  font-size: 48px;
+  background-color: white
+}
+#loser{
+  display: none; 
+  color:brown;
+  justify-content: center;
+  position: absolute;
+  top : 20%;
+  left: 40%;
+  font-size: 32px;
+  background-color: white;
+}
+#restart{
+  display: none;
+  position: absolute;
+  top: 70%;
+}
+img {
+  display: none; 
 }

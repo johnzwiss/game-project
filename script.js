@@ -1,10 +1,15 @@
 const begin = document.querySelector("#start")
-
-
+const welcome = document.querySelector('#welcome')
+const restart = document.querySelector('#restart')
+const instructions = document.querySelector('#instructions')
+const instructionPage = document.querySelector('#instructionPage')
+const winner = document.querySelector('#winner')
+const img = document.querySelector('img')
+const loser = document.querySelector('#loser')
  // create player 
  let player = {
-    x: 250,
-    y: 460,
+    x: 173,
+    y: 200,
     xVelocity: 0,
     yVelocity: 0,
     jump : true,
@@ -18,100 +23,85 @@ let ground = {
         width: 500,
         height: 20,
     }
- 
-  
+ // final platform 
+
+ let finalPlatform = {
+     x: 0,
+     y: -1000,
+     width: 500,
+     height: 20, 
+
+ }
+  //losing platform - falls later so player doesn't die immediately 
+
+let losingPlatform = {
+    x: 0,
+    y: 480,
+    width: 500,
+    height: 20, 
+}
+
  // create platforms  
  
- 
-//  class Platform {
-//     constructor(x, y, color, height, width) {
-//         this.x = (Math.random() * 500)
-//         this.y = 0,
-//         this.color = "brown",
-//         this.height = 10,
-//         this.width = 70
-//         this.speed = 0
-//     }
-  
-//     }
-
-//     function render() {
-//         ctx.fillStyle = this.color
-//         ctx.fillRect(this.x, this.y, this.width, this.height)
- 
-
-
-
-// let platformOne = new Platform(10, -30, "brown", 10, 70)
 let platformA ={
     x: 10,
     y: 20,
     height: 10,
-    width: 70,
-    yVelocity: 3, 
+    width: 70, 
 }    
 let platformB ={
     x: 90,
     y: 120,
     height: 10,
-    width: 70,
-   yVelocity: 3, 
+    width: 70, 
 }    
 let platformC ={
     x: 170,
     y: 220, 
     height: 10,
-    width: 70,
-    yVelocity: 3, 
+    width: 70, 
 }    
 let platformD ={
     x: 250,
     y: 0,
     height: 10,
-    width: 70,
-    yVelocity: 3, 
+    width: 70, 
 }    
 let platformE ={
     x: 330,
     y: 100,
     height: 10,
-    width: 70,
-    yVelocity: 3, 
+    width: 70, 
 }    
 let platformF ={
     x: 410,
     y: 200,
     height: 10,
-    width: 70,
-    yVelocity: 3, 
+    width: 70, 
 }    
 let platformG ={
     x: 330,
     y: 300,
     height: 10,
-    width: 70,
-    yVelocity: 3, 
+    width: 70, 
 }    
 let platformH ={
     x: 270,
     y: 400,
     height: 10,
-    width: 70,
-    yVelocity: 3, 
+    width: 70, 
 }    
 let platformI ={
     x: 100,
     y: 300,
     height: 10,
-    width: 70,
-    yVelocity: 3, 
+    width: 70, 
 }    
 let platformJ ={
     x: 150,
     y: 400,
     height: 10,
-    width: 70,
-    yVelocity: 3, 
+    width: 70, 
 }    
 //left and right side platforms 
 let platArrayA = [platformA, platformB, platformC, platformD, platformE, platformF, platformG, platformH, platformI, platformJ]
@@ -124,8 +114,19 @@ function rendercanvas(){
 // render player 
 function renderplayer(){
     ctx.fillStyle = "green";
-    ctx.fillRect(player.x, player.y, player.width, player.height);
+    ctx.drawImage(img, player.x, player.y, player.width, player.height);
     }
+//render final platform
+function renderFinalPlatform(){
+    ctx.fillStyle = "black"
+    ctx.fillRect(finalPlatform.x, finalPlatform.y, finalPlatform.width, finalPlatform.height)
+}    
+//render loser
+function renderLosingPlatform(){
+    // ctx.globalAlpha = 0.0
+    ctx.fillStyle = "red"
+    ctx.fillRect(losingPlatform.x, losingPlatform.y, losingPlatform.width, losingPlatform.height)}
+
 //creating random platforms 
 function createPlatforms(){
     let i = Math.floor(Math.random() * 3)
@@ -142,7 +143,7 @@ function createPlatforms(){
     ctx.fillRect(platArrayA[9].x, platArrayA[9].y, platArrayA[9].width, platArrayA[9].height)
       }
 
- //attempting to move platforms      
+     
 
 // render ground 
 function renderGround(){
@@ -169,6 +170,7 @@ function keydown(e) {
         keys.right = true;
     }
     if(e.keyCode == 38) {
+        img.style.transform = "scaleX(-1)"
         if(player.jump == false) {
             player.yVelocity = -10;
         }
@@ -181,28 +183,34 @@ function keyup(e) {
         keys.right = false;
     }
     if(e.keyCode == 38) {
-        if(player.yVelocity < -1) 
+        if(player.yVelocity < -2) 
         
-        player.yVelocity = -10;
+        player.yVelocity = -3;
         
     }
+    //game loop
 } 
- function loop() {
+     let gameWon = false
+     let gameLost = false
+  
+     function loop() {
+     
+     if (!gameWon && !gameLost) {
     if(player.jump == false) {
         player.xVelocity *= friction;
     } else {
-        // If the player is in the air then apply the effect of gravity
+        
         player.yVelocity += gravity;
     }
     player.jump = true;
-    // If the left key is pressed increase the relevant horizontal velocity
+    
     if(keys.left) {
         player.xVelocity = -3;
     }
     if(keys.right) {
         player.xVelocity = 3;
     }
-    // Updating the y and x coordinates of the player
+    // Updating the y and x coordinates of the player and platforms 
     player.y += player.yVelocity;
     player.x += player.xVelocity;
     platArrayA[0].y += .9
@@ -215,37 +223,61 @@ function keyup(e) {
     platArrayA[7].y += .9
     platArrayA[8].y += .9
     platArrayA[9].y += .9
+    finalPlatform.y += .9
+    losingPlatform.y += .9 
 
     if (platArrayA[0].y > 490) {
         platArrayA[0].y = 0
+        platArrayA[0].x = Math.random() * 250
     }
     if (platArrayA[1].y > 490) {
         platArrayA[1].y = 0
+        platArrayA[1].x = Math.random() * 250
     }
     if (platArrayA[2].y > 490) {
         platArrayA[2].y = 0
+        platArrayA[2].x = Math.random() * 250
     }
     if (platArrayA[3].y > 490) {
         platArrayA[3].y = 0
+        platArrayA[3].x = Math.random() * 400
     }
     if (platArrayA[4].y > 490) {
         platArrayA[4].y = 0
+        platArrayA[4].x = Math.random() * 400
     }
     if (platArrayA[5].y > 490) {
         platArrayA[5].y = 0
+        platArrayA[5].x = Math.random() * 400
     }
     if (platArrayA[6].y > 490) {
         platArrayA[6].y = 0
+        platArrayA[6].x = Math.random() * 250
     }
     if (platArrayA[7].y > 490) {
         platArrayA[7].y = 0
+        platArrayA[7].x = Math.random() * 250
     }
     if (platArrayA[8].y > 490) {
         platArrayA[8].y = 0
+        platArrayA[8].x = Math.random() * 430
     }
     if (platArrayA[9].y > 490) {
         platArrayA[9].y = 0
+        platArrayA[9].x = Math.random() * 430
     }
+    if (finalPlatform.y > 50) {
+        finalPlatform.y = 50
+    }
+
+    if(losingPlatform.y > 490) {
+        losingPlatform.y = 490
+    }
+
+    if (player.y > 500)
+    {player.y = 490}
+
+    //Collision detection 
 
     let i = -1;
         if (player.x <platArrayA[0].x +platArrayA[0].width
@@ -308,6 +340,17 @@ function keyup(e) {
             && player.y + player.height >platArrayA[9].y){
             i = 21;
         }
+        if (player.x <finalPlatform.x +finalPlatform.width
+            && player.x + player.width >finalPlatform.x
+           && player.y <finalPlatform.y +finalPlatform.height
+            && player.y + player.height >finalPlatform.y){
+            i = 23;
+        }
+
+        if (player.y <losingPlatform.y +losingPlatform.height
+            && player.y + player.height >losingPlatform.y && losingPlatform.y >= 480){
+            i = 25;
+        }
 
         if (ground.y < player.y && player.y < ground.y + ground.height){
                 i = 1;
@@ -320,58 +363,94 @@ function keyup(e) {
             }
          else if (i > 2 && i < 4) {
                 player.jump = false;
-                player.y = platArrayA[0].y - 10
+                player.y = platArrayA[0].y - 20
             }
             else if (i > 4 && i < 6) {
                 player.jump = false;
-                player.y = platArrayA[1].y - 10
+                player.y = platArrayA[1].y - 20
             }
             else if (i > 6 && i < 8) {
                 player.jump = false;
-                player.y = platArrayA[2].y - 10
+                player.y = platArrayA[2].y - 20
             }
             else if (i > 8 && i < 10) {
                 player.jump = false;
-                player.y = platArrayA[3].y - 10
+                player.y = platArrayA[3].y - 20
             }
             else if (i > 10 && i < 12) {
                 player.jump = false;
-                player.y = platArrayA[4].y - 10
+                player.y = platArrayA[4].y - 20
             }
             else if (i > 12 && i < 14) {
                 player.jump = false;
-                player.y = platArrayA[5].y - 10
+                player.y = platArrayA[5].y - 20
             }
             else if (i > 14 && i < 16) {
                 player.jump = false;
-                player.y = platArrayA[6].y - 10
+                player.y = platArrayA[6].y - 20
             }
             else if (i > 16 && i < 18) {
                 player.jump = false;
-                player.y = platArrayA[7].y - 10
+                player.y = platArrayA[7].y - 20
             }
             else if (i > 18 && i < 20) {
                 player.jump = false;
-                player.y = platArrayA[8].y - 10
+                player.y = platArrayA[8].y - 20
             }
             else if (i > 20 && i < 22) {
                 player.jump = false;
-                player.y = platArrayA[9].y - 10
+                player.y = platArrayA[9].y - 20
             }
+            else if (i > 22 && i < 24) {
+                player.jump = false;
+                player.y = finalPlatform.y - 20
+                gameWon = true
+            }
+            else if (i > 24 && i < 26) {
+                player.jump = false;
+                player.y = losingPlatform.y - 20
+                gameLost = true
+            }
+
+
+// rendercanvas();
+// renderGround();    
+// renderplayer();
+// renderFinalPlatform()
+// renderLosingPlatform()
+
 rendercanvas();
+createPlatforms();
 renderGround();    
 renderplayer();
-createPlatforms();
-// console.log(platArrayA[1].y)
+renderFinalPlatform()
+renderLosingPlatform()
+}
+if (gameWon) {
+    winner.style.display = "grid"
+}
+if (gameLost) {
+    loser.style.display = "grid"
 }
 
+}
+
+let startGame = begin.addEventListener('click', function () {
+welcome.style.display = "none"
 canvas=document.getElementById("canvas");
 ctx=canvas.getContext("2d");
 ctx.canvas.height = 800;
 ctx.canvas.width = 500;
-// createPlatforms();
 document.addEventListener("keydown",keydown);
 document.addEventListener("keyup",keyup);
-// Calling loop every 22 milliseconds to update the frame
 let runGame = setInterval(loop,22)
+restart.style.display = "grid"
 
+})
+instructions.addEventListener('click', function () {
+    instructionPage.style.display = "grid"
+})
+
+restart.addEventListener('click', function() {
+    location.reload()
+})

@@ -5,20 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
 <h1>Rock Climber</h1>    
 <div id ="gameBoard">
-    <canvas id="canvas" width="500" height="800">
+    <canvas id="canvas" width="500" height="500">
     </canvas>
     <div id ="welcome">
-        <p>Welcome to rock climber!</p>
+        <p1>Welcome to rock climber!</p1>
+       
         <button id="start"> Start </button>
     <button id="instructions">Instructions</button>
+    <div id="instructionPage">Move your climber with the arrow keys. Use 'up' to jump and try to reach the top! The game will end when you reach the final platform.</div>
     </div>
-    
+    <p1 id="winner">You Won! Congratulations!</p1>
+    <p1 id="loser">You Lost! Hit restart to try again!</p1>
+    <button id="restart">Restart</button>     
 </div>
+<img src=https://i.imgur.com/rrTLwVx.png> 
 
     <script src="script.js"></script>
 </body>
