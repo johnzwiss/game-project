@@ -6,6 +6,8 @@ const instructionPage = document.querySelector('#instructionPage')
 const winner = document.querySelector('#winner')
 const img = document.querySelector('img')
 const loser = document.querySelector('#loser')
+const flip = document.querySelector("#flip") 
+let counter = 2
  // create player 
  let player = {
     x: 173,
@@ -113,9 +115,20 @@ function rendercanvas(){
 }
 // render player 
 function renderplayer(){
-    ctx.fillStyle = "green";
+    // document.addEventListener("keydown",keydown)
+    // ctx.fillStyle = "green";
+    // let x = 2 
+    // function keydown(e) { if(e.keyCode == 38) { 
+    //     return x++}}
+    // console.log(x)
+    if (counter % 2 == 0) { 
     ctx.drawImage(img, player.x, player.y, player.width, player.height);
     }
+    else {
+        ctx.drawImage(flip, player.x, player.y, player.width, player.height)
+    }
+    
+}
 //render final platform
 function renderFinalPlatform(){
     ctx.fillStyle = "black"
@@ -152,13 +165,12 @@ function renderGround(){
 }
 
 
-//player movement 
+//player movement gravity help from https://www.w3schools.com/graphics/game_gravity.asp
 const keys = {
     right: false,
     left: false,
     up: false,
     };
-
     let gravity = 0.6;
     let friction = 0.7;
 
@@ -169,11 +181,12 @@ function keydown(e) {
     if(e.keyCode == 39) {
         keys.right = true;
     }
-    if(e.keyCode == 38) {
-        img.style.transform = "scaleX(-1)"
+    if(e.keyCode == 38) { 
+        counter +=1
         if(player.jump == false) {
             player.yVelocity = -10;
         }
+        
 }}
 function keyup(e) {
     if(e.keyCode == 37) {
@@ -184,9 +197,7 @@ function keyup(e) {
     }
     if(e.keyCode == 38) {
         if(player.yVelocity < -2) 
-        
-        player.yVelocity = -3;
-        
+        player.yVelocity = -3; 
     }
     //game loop
 } 
@@ -194,8 +205,9 @@ function keyup(e) {
      let gameLost = false
   
      function loop() {
-     
+
      if (!gameWon && !gameLost) {
+
     if(player.jump == false) {
         player.xVelocity *= friction;
     } else {
@@ -275,7 +287,7 @@ function keyup(e) {
     }
 
     if (player.y > 500)
-    {player.y = 490}
+    {player.y = 480}
 
     //Collision detection 
 
@@ -347,14 +359,22 @@ function keyup(e) {
             i = 23;
         }
 
-        if (player.y <losingPlatform.y +losingPlatform.height
-            && player.y + player.height >losingPlatform.y && losingPlatform.y >= 480){
+        if (player.y <= losingPlatform.y +losingPlatform.height
+            && player.y + player.height >= losingPlatform.y && losingPlatform.y >= 480){
             i = 25;
         }
 
         if (ground.y < player.y && player.y < ground.y + ground.height){
                 i = 1;
             }    
+        //walls
+        
+        if (player.x <= 0) {
+            player.x = 1 
+        }
+        if (player.x >= 500) {
+            player.x = 499
+        }
 
 
         if (i > 0 && i < 2){
@@ -413,11 +433,7 @@ function keyup(e) {
             }
 
 
-// rendercanvas();
-// renderGround();    
-// renderplayer();
-// renderFinalPlatform()
-// renderLosingPlatform()
+
 
 rendercanvas();
 createPlatforms();

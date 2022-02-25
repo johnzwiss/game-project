@@ -89,3 +89,7 @@ h1{
 img {
   display: none; 
 }
+
+#flip {
+  display: none;
+}
