@@ -7,7 +7,7 @@ const winner = document.querySelector('#winner')
 const img = document.querySelector('img')
 const loser = document.querySelector('#loser')
 const flip = document.querySelector("#flip") 
-let counter = 2
+let counter = 1
  // create player 
  let player = {
     x: 173,
@@ -105,7 +105,7 @@ let platformJ ={
     height: 10,
     width: 70, 
 }    
-//left and right side platforms 
+//platform array 
 let platArrayA = [platformA, platformB, platformC, platformD, platformE, platformF, platformG, platformH, platformI, platformJ]
 
  //render canvas    
@@ -115,12 +115,7 @@ function rendercanvas(){
 }
 // render player 
 function renderplayer(){
-    // document.addEventListener("keydown",keydown)
-    // ctx.fillStyle = "green";
-    // let x = 2 
-    // function keydown(e) { if(e.keyCode == 38) { 
-    //     return x++}}
-    // console.log(x)
+ 
     if (counter % 2 == 0) { 
     ctx.drawImage(img, player.x, player.y, player.width, player.height);
     }
@@ -136,13 +131,12 @@ function renderFinalPlatform(){
 }    
 //render loser
 function renderLosingPlatform(){
-    // ctx.globalAlpha = 0.0
+  
     ctx.fillStyle = "red"
     ctx.fillRect(losingPlatform.x, losingPlatform.y, losingPlatform.width, losingPlatform.height)}
 
-//creating random platforms 
+//creating platforms 
 function createPlatforms(){
-    let i = Math.floor(Math.random() * 3)
     ctx.fillStyle = "brown";
     ctx.fillRect(platArrayA[0].x, platArrayA[0].y, platArrayA[0].width, platArrayA[0].height);
     ctx.fillRect(platArrayA[1].x, platArrayA[1].y, platArrayA[1].width, platArrayA[1].height);
@@ -199,11 +193,26 @@ function keyup(e) {
         if(player.yVelocity < -2) 
         player.yVelocity = -3; 
     }
-    //game loop
+    //--------------------game conditions------------------------
 } 
      let gameWon = false
      let gameLost = false
-  
+    //  let levelTwo = 
+    //  if (levelTwo) { 
+    //     platArrayA[0].y += 1.5
+    //     platArrayA[1].y += 1.5
+    //     platArrayA[2].y += 1.5
+    //     platArrayA[3].y += 1.5
+    //     platArrayA[4].y += 1.5
+    //     platArrayA[5].y += 1.5
+    //     platArrayA[6].y += 1.5
+    //     platArrayA[7].y += 1.5
+    //     platArrayA[8].y += 1.5
+    //     platArrayA[9].y += 1.5
+
+    //  }
+
+// ----------------------game loop------------------------------
      function loop() {
 
      if (!gameWon && !gameLost) {
@@ -237,6 +246,23 @@ function keyup(e) {
     platArrayA[9].y += .9
     finalPlatform.y += .9
     losingPlatform.y += .9 
+
+    // if (levelTwo) { 
+    //     platArrayA[0].y += 1
+    //     platArrayA[1].y += 1
+    //     platArrayA[2].y += 1
+    //     platArrayA[3].y += 1
+    //     platArrayA[4].y += 1
+    //     platArrayA[5].y += 1
+    //     platArrayA[6].y += 1
+    //     platArrayA[7].y += 1
+    //     platArrayA[8].y += 1
+    //     platArrayA[9].y += 1
+
+    //  }
+
+
+    //Collision detection 
 
     if (platArrayA[0].y > 490) {
         platArrayA[0].y = 0
@@ -286,10 +312,8 @@ function keyup(e) {
         losingPlatform.y = 490
     }
 
-    if (player.y > 500)
-    {player.y = 480}
+    
 
-    //Collision detection 
 
     let i = -1;
         if (player.x <platArrayA[0].x +platArrayA[0].width
@@ -375,6 +399,13 @@ function keyup(e) {
         if (player.x >= 500) {
             player.x = 499
         }
+
+        if (player.y <= 0) {
+            player.y = 0
+        }
+
+        if (player.y > 500)
+        {player.y = 480}
 
 
         if (i > 0 && i < 2){
@@ -468,5 +499,6 @@ instructions.addEventListener('click', function () {
 })
 
 restart.addEventListener('click', function() {
-    location.reload()
+     location.reload()
+    
 })
