@@ -379,7 +379,7 @@ function keyup(e) {
         if (player.x <finalPlatform.x +finalPlatform.width
             && player.x + player.width >finalPlatform.x
            && player.y <finalPlatform.y +finalPlatform.height
-            && player.y + player.height >finalPlatform.y){
+            && player.y + player.height >finalPlatform.y && finalPlatform.y > 40){
             i = 23;
         }
 
