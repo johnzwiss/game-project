@@ -25,7 +25,7 @@
   }
 #welcome {
   display: grid;
-  grid-template-rows: 40px 40px 40px 40px 40px;
+  grid-template-rows: 40px 40px 40px;
   grid-template-columns: 500px;
   background-color: brown;
   justify-content: center;
@@ -69,7 +69,7 @@ h1{
   top : 20%;
   left: 37%;
   font-size: 48px;
-  background-color: white
+  background-color: white;
 }
 #loser{
   display: none; 
