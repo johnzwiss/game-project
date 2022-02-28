@@ -34,7 +34,7 @@ let ground = {
      height: 20, 
 
  }
-  //losing platform - falls later so player doesn't die immediately 
+  //losing platform 
 
 let losingPlatform = {
     x: 0,
@@ -159,7 +159,7 @@ function renderGround(){
 }
 
 
-//player movement gravity help from https://www.w3schools.com/graphics/game_gravity.asp
+//player movement 
 const keys = {
     right: false,
     left: false,
@@ -197,20 +197,6 @@ function keyup(e) {
 } 
      let gameWon = false
      let gameLost = false
-    //  let levelTwo = 
-    //  if (levelTwo) { 
-    //     platArrayA[0].y += 1.5
-    //     platArrayA[1].y += 1.5
-    //     platArrayA[2].y += 1.5
-    //     platArrayA[3].y += 1.5
-    //     platArrayA[4].y += 1.5
-    //     platArrayA[5].y += 1.5
-    //     platArrayA[6].y += 1.5
-    //     platArrayA[7].y += 1.5
-    //     platArrayA[8].y += 1.5
-    //     platArrayA[9].y += 1.5
-
-    //  }
 
 // ----------------------game loop------------------------------
      function loop() {
@@ -231,7 +217,7 @@ function keyup(e) {
     if(keys.right) {
         player.xVelocity = 3;
     }
-    // Updating the y and x coordinates of the player and platforms 
+    // Updating the x and y of the player and platforms 
     player.y += player.yVelocity;
     player.x += player.xVelocity;
     platArrayA[0].y += .9
@@ -247,19 +233,6 @@ function keyup(e) {
     finalPlatform.y += .9
     losingPlatform.y += .9 
 
-    // if (levelTwo) { 
-    //     platArrayA[0].y += 1
-    //     platArrayA[1].y += 1
-    //     platArrayA[2].y += 1
-    //     platArrayA[3].y += 1
-    //     platArrayA[4].y += 1
-    //     platArrayA[5].y += 1
-    //     platArrayA[6].y += 1
-    //     platArrayA[7].y += 1
-    //     platArrayA[8].y += 1
-    //     platArrayA[9].y += 1
-
-    //  }
 
 
     //Collision detection 
